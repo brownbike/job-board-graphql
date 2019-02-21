@@ -1,0 +1,24 @@
+{
+  "name": "graphql-client",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "bulma": "0.6.2",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.2",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "react-scripts": "^2.1.5"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
