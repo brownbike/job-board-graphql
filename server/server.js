@@ -10,13 +10,7 @@ const db = require("./db");
 const port = 9000;
 const jwtSecret = Buffer.from("Zn8Q5tyZ/G1MHltc4F/gTkVJMlrbKiZt", "base64");
 
-const { typeDefs } = require("./schema.js");
-const resolvers = require("./resolvers");
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
 const app = express();
-server.applyMiddleware({ app });
 
 app.use(
   cors(),
@@ -26,6 +20,17 @@ app.use(
     credentialsRequired: false
   })
 );
+
+const { typeDefs } = require("./schema.js");
+const resolvers = require("./resolvers");
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => ({ user: req.user })
+});
+
+server.applyMiddleware({ app });
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
