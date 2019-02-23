@@ -18,20 +18,20 @@ const NavWrapper = styled.ul`
 
 const LinkWrapper = styled.li`
   margin: 10px;
-  text-transform: uppercase;
-  position: relative;
   overflow: hidden;
+  position: relative;
   transition: 0.3s;
+  text-transform: uppercase;
 
   &:after {
+    background: #209ceed1;
+    bottom: 0;
+    content: "";
+    height: 3px;
+    left: 0;
     position: absolute;
     transition: 0.3s;
-    content: "";
     width: 0;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    background: #209ceed1;
   }
 
   &:hover {
@@ -61,9 +61,10 @@ const Button = styled.button`
 
 const NavLink = styled(Link)`
   ${NavItem}
+  &:hover {
+    color: #4a4a4a !important;
+  }
 `;
-
-// TODO: add link colors
 
 export class NavBar extends Component {
   render() {

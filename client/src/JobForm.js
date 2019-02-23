@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-
 import styled, { css } from "styled-components";
-
-const Title = styled.h1`
-  color: #363636;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.125;
-  padding-bottom: 0.5em;
-`;
+import Title from "./common/Title";
+import Button from "./common/Button";
+import Label from "./common/Label";
 
 const FormWrapper = styled.div`
   background-color: white;
@@ -20,17 +14,6 @@ const FormWrapper = styled.div`
 const FieldWrapper = styled.div`
   &:not(:last-child) {
     margin-bottom: 0.75rem;
-  }
-`;
-
-const Label = styled.label`
-  color: #363636;
-  display: block;
-  font-size: 1rem;
-  font-weight: 700;
-
-  &:not(:last-child) {
-    margin-bottom: 0.5em;
   }
 `;
 
@@ -62,29 +45,6 @@ const TextArea = styled.textarea`
   height: 10em;
 `;
 
-const Button = styled.button`
-  align-items: center;
-  background-color: ${props => (props.submit ? "#3273dc" : "white")};
-  border-color: #dbdbdb;
-  border: 1px solid
-    ${props => (props.submit ? "transparent" : "rgba(10, 10, 10, 0.25)")};
-  border-radius: 3px;
-  box-shadow: none;
-  color: ${props => (props.submit ? "#fff" : "#363636")};
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 1rem;
-  height: 2.25em;
-  justify-content: flex-start;
-  padding: 0.5em;
-  position: relative;
-  justify-content: center;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  text-align: center;
-  white-space: nowrap;
-`;
-
 export class JobForm extends Component {
   constructor(props) {
     super(props);
@@ -114,7 +74,7 @@ export class JobForm extends Component {
                 type="text"
                 name="title"
                 value={title}
-                onChange={this.handleChange.bind(this)}
+                onChange={e => this.handleChange(e)}
               />
             </FieldWrapper>
             <FieldWrapper>
@@ -122,11 +82,11 @@ export class JobForm extends Component {
               <TextArea
                 name="description"
                 value={description}
-                onChange={this.handleChange.bind(this)}
+                onChange={e => this.handleChange(e)}
               />
             </FieldWrapper>
             <FieldWrapper>
-              <Button submit onClick={this.handleClick.bind(this)}>
+              <Button submit onClick={e => this.handleClick(e)}>
                 Submit
               </Button>
             </FieldWrapper>

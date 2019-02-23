@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
 import { login } from "./auth";
+import Button from "./common/Button";
+import Label from "./common/Label";
 
 const Form = styled.form`
   margin: 0 auto;
@@ -11,17 +12,6 @@ const Form = styled.form`
 const FieldWrapper = styled.div`
   &:not(:last-child) {
     margin-bottom: 0.75rem;
-  }
-`;
-
-const Label = styled.label`
-  color: #363636;
-  display: block;
-  font-size: 1rem;
-  font-weight: 700;
-
-  &:not(:last-child) {
-    margin-bottom: 0.5em;
   }
 `;
 
@@ -37,29 +27,6 @@ const Input = styled.input`
   line-height: 1.5;
   padding: 0.5em;
   width: 100%;
-`;
-
-const Button = styled.button`
-  align-items: center;
-  background-color: ${props => (props.submit ? "#3273dc" : "white")};
-  border-color: #dbdbdb;
-  border: 1px solid
-    ${props => (props.submit ? "transparent" : "rgba(10, 10, 10, 0.25)")};
-  border-radius: 3px;
-  box-shadow: none;
-  color: ${props => (props.submit ? "#fff" : "#363636")};
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 1rem;
-  height: 2.25em;
-  justify-content: flex-start;
-  padding: 0.5em;
-  position: relative;
-  justify-content: center;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  text-align: center;
-  white-space: nowrap;
 `;
 
 const Message = styled.p`
@@ -102,7 +69,7 @@ export class LoginForm extends Component {
             type="text"
             name="email"
             value={email}
-            onChange={this.handleChange.bind(this)}
+            onChange={e => this.handleChange(e)}
           />
         </FieldWrapper>
         <FieldWrapper>
@@ -111,12 +78,12 @@ export class LoginForm extends Component {
             type="password"
             name="password"
             value={password}
-            onChange={this.handleChange.bind(this)}
+            onChange={e => this.handleChange(e)}
           />
         </FieldWrapper>
         <FieldWrapper>
           <Message error>{error && "Invalid credentials"}</Message>
-          <Button submit onClick={this.handleClick.bind(this)}>
+          <Button submit onClick={e => this.handleClick(e)}>
             Login
           </Button>
         </FieldWrapper>

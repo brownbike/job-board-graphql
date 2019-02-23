@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import { companies } from "./fake-data";
-
-const Title = styled.h1`
-  color: #363636;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.125;
-  padding-bottom: 0.5em;
-`;
+import Title from "./common/Title";
 
 const DescriptionWrapper = styled.div`
   background-color: white;

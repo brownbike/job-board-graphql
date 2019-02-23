@@ -1,16 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import { jobs } from "./fake-data";
-
-const Title = styled.h1`
-  color: #363636;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.125;
-  padding-bottom: 0.5em;
-`;
+import Title from "./common/Title";
 
 const SubTitle = styled.h2`
   color: #4a4a4a;
