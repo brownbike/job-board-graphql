@@ -27,7 +27,7 @@ const resolvers = require("./resolvers");
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req }) => ({ user: req.user })
+  context: ({ req }) => ({ user: req.user && db.users.get(req.user.sub) })
 });
 
 server.applyMiddleware({ app });

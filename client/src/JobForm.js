@@ -61,8 +61,7 @@ export class JobForm extends Component {
     event.preventDefault();
     const { title, description } = this.state;
 
-    const companyId = "HJRa-DOuG"; // FIXME
-    createJob({ companyId, title, description }).then(job => {
+    createJob({ title, description }).then(job => {
       this.props.history.push(`/jobs/${job.id}`);
     });
   }
