@@ -1,37 +1,101 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
+
+const Nav = styled.nav`
+  background-color: white;
+  max-width: 750px;
+  padding-top: 1em;
+  position: relative;
+`;
+
+const NavWrapper = styled.ul`
+  align-items: stretch;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: auto;
+`;
+
+const LinkWrapper = styled.li`
+  margin: 10px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+
+  &:after {
+    position: absolute;
+    transition: 0.3s;
+    content: "";
+    width: 0;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background: #209ceed1;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &:after {
+      width: 100%;
+      left: 0;
+    }
+  }
+`;
+
+const NavItem = css`
+  color: #4a4a4a;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+`;
+
+const Button = styled.button`
+  ${NavItem}
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+`;
+
+const NavLink = styled(Link)`
+  ${NavItem}
+`;
+
+// TODO: add link colors
 
 export class NavBar extends Component {
   render() {
     const { loggedIn, onLogout } = this.props;
     if (loggedIn) {
       return (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/jobs/new">Post Job</Link>
-            </li>
-            <li>
-              <button onClick={onLogout}>Logout</button>
-            </li>
-          </ul>
-        </nav>
+        <Nav>
+          <NavWrapper>
+            <LinkWrapper>
+              <NavLink to="/">Home</NavLink>
+            </LinkWrapper>
+            <LinkWrapper>
+              <NavLink to="/jobs/new">Post Job</NavLink>
+            </LinkWrapper>
+            <LinkWrapper>
+              <Button onClick={onLogout}>Logout</Button>
+            </LinkWrapper>
+          </NavWrapper>
+        </Nav>
       );
     } else {
       return (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </nav>
+        <Nav>
+          <NavWrapper>
+            <LinkWrapper>
+              <NavLink to="/">Home</NavLink>
+            </LinkWrapper>
+            <LinkWrapper>
+              <NavLink to="/login">Login</NavLink>
+            </LinkWrapper>
+          </NavWrapper>
+        </Nav>
       );
     }
   }

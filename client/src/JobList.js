@@ -1,10 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const JobListWrapper = styled.ul`
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  color: #4a4a4a;
+  display: block;
+`;
+
+const JobWrapper = styled.li`
+  padding: 1.25rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  }
+`;
 
 export class JobList extends Component {
   render() {
     const { jobs } = this.props;
-    return <ul>{jobs.map(this.renderJob.bind(this))}</ul>;
+    return (
+      <JobListWrapper>{jobs.map(this.renderJob.bind(this))}</JobListWrapper>
+    );
   }
 
   renderJob(job) {
@@ -12,11 +31,9 @@ export class JobList extends Component {
       ? `${job.title} at ${job.company.name}`
       : job.title;
     return (
-      <li key={job.id}>
-        <div className="media-content">
-          <Link to={`/jobs/${job.id}`}>{title}</Link>
-        </div>
-      </li>
+      <JobWrapper key={job.id}>
+        <Link to={`/jobs/${job.id}`}>{title}</Link>
+      </JobWrapper>
     );
   }
 }

@@ -1,6 +1,39 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 import { jobs } from "./fake-data";
+
+const Title = styled.h1`
+  color: #363636;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.125;
+  padding-bottom: 0.5em;
+`;
+
+const SubTitle = styled.h2`
+  color: #4a4a4a;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const DescriptionWrapper = styled.div`
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  padding: 1.25rem;
+`;
+
+const Description = styled.p`
+  color: #4a4a4a;
+  display: block;
+`;
 
 export class JobDetail extends Component {
   constructor(props) {
@@ -12,13 +45,15 @@ export class JobDetail extends Component {
   render() {
     const { job } = this.state;
     return (
-      <div>
-        <h1>{job.title}</h1>
-        <h2>
+      <>
+        <Title>{job.title}</Title>
+        <SubTitle>
           <Link to={`/companies/${job.company.id}`}>{job.company.name}</Link>
-        </h2>
-        <div>{job.description}</div>
-      </div>
+        </SubTitle>
+        <DescriptionWrapper>
+          <Description>{job.description}</Description>
+        </DescriptionWrapper>
+      </>
     );
   }
 }

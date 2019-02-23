@@ -1,5 +1,27 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
 import { companies } from "./fake-data";
+
+const Title = styled.h1`
+  color: #363636;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.125;
+  padding-bottom: 0.5em;
+`;
+
+const DescriptionWrapper = styled.div`
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  padding: 1.25rem;
+`;
+
+const Description = styled.p`
+  color: #4a4a4a;
+  display: block;
+`;
 
 export class CompanyDetail extends Component {
   constructor(props) {
@@ -14,8 +36,10 @@ export class CompanyDetail extends Component {
     const { company } = this.state;
     return (
       <div>
-        <h1>{company.name}</h1>
-        <div>{company.description}</div>
+        <Title>{company.name}</Title>
+        <DescriptionWrapper>
+          <Description>{company.description}</Description>
+        </DescriptionWrapper>
       </div>
     );
   }
