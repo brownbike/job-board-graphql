@@ -1,38 +1,56 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import { companies } from "./fake-data";
+import { loadCompany } from "./requests";
+import styles from "./styles";
+import { JobList } from "./JobList";
 import Title from "./common/Title";
 
 const DescriptionWrapper = styled.div`
   background-color: white;
   border-radius: 5px;
-  border: 1px solid rgba(10, 10, 10, 0.1);
-  padding: 1.25rem;
+  padding: 0.5rem 0;
+  margin-bottom: 0.75em;
 `;
 
 const Description = styled.p`
-  color: #4a4a4a;
+  color: ${styles.colors.black};
+  display: block;
+  margin-bottom: 1em;
+`;
+
+const JobMessage = styled.h5`
+  color: ${styles.colors.gray};
   display: block;
 `;
 
 export class CompanyDetail extends Component {
   constructor(props) {
     super(props);
-    const { companyId } = this.props.match.params;
     this.state = {
-      company: companies.find(company => company.id === companyId)
+      company: null
     };
+  }
+
+  async componentDidMount() {
+    const { companyId } = this.props.match.params;
+    const company = await loadCompany(companyId);
+    this.setState({ company });
   }
 
   render() {
     const { company } = this.state;
+    if (!company) {
+      return null;
+    }
+
     return (
       <div>
         <Title>{company.name}</Title>
         <DescriptionWrapper>
           <Description>{company.description}</Description>
+          <JobMessage>Jobs at {company.name}</JobMessage>
         </DescriptionWrapper>
+        <JobList jobs={company.jobs} />
       </div>
     );
   }

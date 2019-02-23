@@ -1,10 +1,25 @@
 import React, { Component } from "react";
 import { JobList } from "./JobList";
+import { loadJobs } from "./requests";
 import Title from "./common/Title";
-import { jobs } from "./fake-data";
 
 export class JobBoard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      jobs: []
+    };
+  }
+
+  async componentDidMount() {
+    const jobs = await loadJobs();
+    this.setState({ jobs });
+  }
+
   render() {
+    const { jobs } = this.state;
+
     return (
       <>
         <Title>Job Board</Title>
