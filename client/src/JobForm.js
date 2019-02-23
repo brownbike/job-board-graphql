@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { createJob } from "./requests";
 import styled, { css } from "styled-components";
 import Title from "./common/Title";
 import Button from "./common/Button";
@@ -58,7 +59,12 @@ export class JobForm extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    console.log("should post a new job:", this.state);
+    const { title, description } = this.state;
+
+    const companyId = "HJRa-DOuG"; // FIXME
+    createJob({ companyId, title, description }).then(job => {
+      this.props.history.push(`/jobs/${job.id}`);
+    });
   }
 
   render() {
