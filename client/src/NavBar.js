@@ -69,35 +69,25 @@ const NavLink = styled(Link)`
 export class NavBar extends Component {
   render() {
     const { loggedIn, onLogout } = this.props;
-    if (loggedIn) {
-      return (
-        <Nav>
-          <NavWrapper>
-            <LinkWrapper>
-              <NavLink to="/">Home</NavLink>
-            </LinkWrapper>
-            <LinkWrapper>
-              <NavLink to="/jobs/new">Post Job</NavLink>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Button onClick={onLogout}>Logout</Button>
-            </LinkWrapper>
-          </NavWrapper>
-        </Nav>
-      );
-    } else {
-      return (
-        <Nav>
-          <NavWrapper>
-            <LinkWrapper>
-              <NavLink to="/">Home</NavLink>
-            </LinkWrapper>
-            <LinkWrapper>
+
+    return (
+      <Nav>
+        <NavWrapper>
+          <LinkWrapper>
+            <NavLink to="/">Home</NavLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            {loggedIn && <NavLink to="/jobs/new">Post Job</NavLink>}
+          </LinkWrapper>
+          <LinkWrapper>
+            {!loggedIn ? (
               <NavLink to="/login">Login</NavLink>
-            </LinkWrapper>
-          </NavWrapper>
-        </Nav>
-      );
-    }
+            ) : (
+              <Button onClick={onLogout}>Logout</Button>
+            )}
+          </LinkWrapper>
+        </NavWrapper>
+      </Nav>
+    );
   }
 }
