@@ -4,11 +4,10 @@ import styled, { css } from "styled-components";
 import Title from "./common/Title";
 import Button from "./common/Button";
 import Label from "./common/Label";
+import styles from "./styles";
 
 const FormWrapper = styled.div`
-  background-color: white;
   border-radius: 5px;
-  border: 1px solid rgba(10, 10, 10, 0.1);
   padding: 1.25rem;
 `;
 
@@ -21,16 +20,13 @@ const FieldWrapper = styled.div`
 const fieldStyles = css`
   align-items: center;
   background-color: white;
-  border-color: #dbdbdb;
-  border: 1px solid rgba(10, 10, 10, 0.25);
-  border-radius: 3px;
+  border: ${styles.border.withColor(styles.colors.lighterGray)};
   box-shadow: none;
-  color: #363636;
+  color: ${styles.colors.black};
   display: inline-flex;
   font-size: 1rem;
   height: 2.25em;
   justify-content: flex-start;
-  line-height: 1.5;
   padding: 0.5em;
   position: relative;
   max-width: 100%;

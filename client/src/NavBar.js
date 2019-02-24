@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import styles from "./styles";
 
 const Nav = styled.nav`
   background-color: white;
@@ -24,7 +25,7 @@ const LinkWrapper = styled.li`
   text-transform: uppercase;
 
   &:after {
-    background: #209ceed1;
+    background: ${styles.colors.blue};
     bottom: 0;
     content: "";
     height: 3px;
@@ -45,25 +46,28 @@ const LinkWrapper = styled.li`
 `;
 
 const NavItem = css`
-  color: #4a4a4a;
+  color: ${styles.colors.black} !important;
   display: block;
   font-size: 1rem;
-  line-height: 1.5;
   padding: 0.5rem 1rem;
+  transition: color 0.325s ease-out;
+
+  &:hover {
+    color: ${styles.colors.blue} !important;
+    transition: color 0.325s ease-out;
+  }
 `;
 
 const Button = styled.button`
   ${NavItem}
   border: none;
+  background-color: transparent;
   cursor: pointer;
   text-transform: uppercase;
 `;
 
 const NavLink = styled(Link)`
   ${NavItem}
-  &:hover {
-    color: #4a4a4a !important;
-  }
 `;
 
 export class NavBar extends Component {

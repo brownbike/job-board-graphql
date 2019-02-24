@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import styles from "./styles";
 
 import { isLoggedIn, logout } from "./auth";
 import { CompanyDetail } from "./CompanyDetail";
@@ -46,7 +47,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
-    line-height: 1;
   }
 
   ol, ul {
@@ -68,23 +68,27 @@ const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 
+  *:focus {
+    outline: none;
+  }
+
   a,
   a:link,
   a:visited,
   a:active {
-    color: #4a4a4a;
+    color: ${styles.colors.blue};
     text-decoration: none;
     transition: color 0.325s ease-out;
 
     &:hover {
-      color: #209ceed1;
+      color: ${styles.colors.black};
       transition: color 0.325s ease-out;
     }
   }
 `;
 
 const Outer = styled.section`
-  padding: 1.5rem;
+  padding: 0.25rem 1.5rem 1.5rem;
 `;
 
 const Container = styled.section`

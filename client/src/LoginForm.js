@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { login } from "./auth";
 import Button from "./common/Button";
 import Label from "./common/Label";
+import styles from "./styles";
 
 const Form = styled.form`
   margin: 0 auto;
@@ -21,10 +22,9 @@ const Input = styled.input`
   border: 1px solid rgba(10, 10, 10, 0.25);
   border-radius: 3px;
   box-shadow: none;
-  color: #363636;
+  color: ${styles.colors.black};
   font-size: 1rem;
   height: 2.25em;
-  line-height: 1.5;
   padding: 0.5em;
   width: 100%;
 `;

@@ -6,7 +6,6 @@ import { JobList } from "./JobList";
 import Title from "./common/Title";
 
 const DescriptionWrapper = styled.div`
-  background-color: white;
   border-radius: 5px;
   padding: 0.5rem 0;
   margin-bottom: 0.75em;

@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import styles from "./styles";
 
 const JobListWrapper = styled.ul`
-  background-color: white;
   border-radius: 5px;
-  border: 1px solid rgba(10, 10, 10, 0.1);
-  color: #4a4a4a;
   display: block;
 `;
 
 const JobWrapper = styled.li`
+  background-color: ${styles.colors.lightGray};
+  border: ${styles.border.withColor(styles.colors.lighterGray)};
   padding: 1.25rem;
 
   &:not(:last-child) {
-    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    margin-bottom: 0.5em;
   }
 `;
 
