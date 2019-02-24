@@ -1,7 +1,17 @@
+## To get started
+
+```sh
+cd client && npm install
+cd server && npm install
+```
+
 ### Server
 
 `npm start`
 
 ### Client
 
-`npm start`
+```sh
+npm start
+npm test
+```
