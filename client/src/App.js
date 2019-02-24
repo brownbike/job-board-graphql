@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import styles from "./styles";
 
-import { isLoggedIn, logout } from "./auth";
+import { isLoggedIn, logout } from "./utils/auth";
 import { CompanyDetail } from "./CompanyDetail";
 import { LoginForm } from "./LoginForm";
 import { JobBoard } from "./JobBoard";

@@ -9,6 +9,10 @@ const Title = styled.h1`
   padding-bottom: 0.25em;
 `;
 
-export default ({ children, ...props }) => {
-  return <Title {...props}>{children}</Title>;
+export default ({ dataTestId, children, ...props }) => {
+  return (
+    <Title data-test-id={dataTestId} {...props}>
+      {children}
+    </Title>
+  );
 };

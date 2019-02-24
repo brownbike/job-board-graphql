@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { login } from "./auth";
+import { login } from "./utils/auth";
 import Button from "./common/Button";
 import Label from "./common/Label";
 import styles from "./styles";

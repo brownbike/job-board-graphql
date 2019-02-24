@@ -25,9 +25,9 @@ const Button = styled.button`
   white-space: nowrap;
 `;
 
-export default ({ children, ...props }) => {
+export default ({ dataTestId, children, ...props }) => {
   return (
-    <Button type="button" {...props}>
+    <Button type="button" data-test-id={dataTestId} {...props}>
       {children}
     </Button>
   );

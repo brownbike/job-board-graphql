@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createJob } from "./requests";
+import { createJob } from "./utils/requests";
 import styled, { css } from "styled-components";
 import Title from "./common/Title";
 import Button from "./common/Button";

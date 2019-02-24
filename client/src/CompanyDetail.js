@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { loadCompany } from "./requests";
+import { loadCompany } from "./utils/requests";
 import styles from "./styles";
 import { JobList } from "./JobList";
 import Title from "./common/Title";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { loadJob } from "./requests";
+import { loadJob } from "./utils/requests";
 import styled from "styled-components";
 import Title from "./common/Title";
 import styles from "./styles";

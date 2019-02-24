@@ -13,6 +13,10 @@ const Label = styled.label`
   }
 `;
 
-export default ({ children, ...props }) => {
-  return <Label {...props}>{children}</Label>;
+export default ({ dataTestId, children, ...props }) => {
+  return (
+    <Label data-test-id={dataTestId} {...props}>
+      {children}
+    </Label>
+  );
 };
