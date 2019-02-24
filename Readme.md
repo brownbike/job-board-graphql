@@ -1,7 +1,6 @@
 ### Server
 
-`node server.js`
-`nodemon server.js`
+`npm start`
 
 ### Client
 
