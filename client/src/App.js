@@ -114,16 +114,16 @@ export class App extends Component {
     this.state = { loggedIn: isLoggedIn() };
   }
 
-  handleLogin() {
+  handleLogin = () => {
     this.setState({ loggedIn: true });
     this.router.history.push("/");
-  }
+  };
 
-  handleLogout() {
+  handleLogout = () => {
     logout();
     this.setState({ loggedIn: false });
     this.router.history.push("/");
-  }
+  };
 
   render() {
     const { loggedIn } = this.state;
@@ -131,7 +131,7 @@ export class App extends Component {
       <Router ref={router => (this.router = router)}>
         <Container>
           <GlobalStyle />
-          <NavBar loggedIn={loggedIn} onLogout={this.handleLogout.bind(this)} />
+          <NavBar loggedIn={loggedIn} onLogout={this.handleLogout} />
           <Outer>
             <Switch>
               <Route exact path="/" component={JobBoard} />
@@ -141,9 +141,7 @@ export class App extends Component {
               <Route
                 exact
                 path="/login"
-                render={() => (
-                  <LoginForm onLogin={this.handleLogin.bind(this)} />
-                )}
+                render={() => <LoginForm onLogin={this.handleLogin} />}
               />
             </Switch>
           </Outer>

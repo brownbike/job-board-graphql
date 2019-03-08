@@ -21,12 +21,10 @@ const JobWrapper = styled.li`
 export class JobList extends Component {
   render() {
     const { jobs } = this.props;
-    return (
-      <JobListWrapper>{jobs.map(this.renderJob.bind(this))}</JobListWrapper>
-    );
+    return <JobListWrapper>{jobs.map(this.renderJob)}</JobListWrapper>;
   }
 
-  renderJob(job) {
+  renderJob = job => {
     const title = job.company
       ? `${job.title} at ${job.company.name}`
       : job.title;
@@ -35,5 +33,5 @@ export class JobList extends Component {
         <Link to={`/jobs/${job.id}`}>{title}</Link>
       </JobWrapper>
     );
-  }
+  };
 }

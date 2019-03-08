@@ -20,7 +20,7 @@ const FieldWrapper = styled.div`
 const fieldStyles = css`
   align-items: center;
   background-color: white;
-  border: ${styles.border.withColor(styles.colors.lighterGray)};
+  border: ${styles.border.withColor(styles.colors.mediumGray)};
   box-shadow: none;
   color: ${styles.colors.black};
   display: inline-flex;
