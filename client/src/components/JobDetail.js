@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { loadJob } from "./utils/requests";
+import { loadJob } from "../utils/requests";
 import styled from "styled-components";
 import Title from "./common/Title";
-import styles from "./styles";
+import styles from "../styles/styles";
 
 const SubTitle = styled.h2`
   color: ${styles.colors.gray};

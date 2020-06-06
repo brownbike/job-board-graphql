@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import styles from "../../styles";
+import styles from "../../../styles/styles";
 
 const Label = styled.label`
   color: ${styles.colors.black};

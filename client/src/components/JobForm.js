@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { createJob } from "./utils/requests";
+import { createJob } from "../utils/requests";
 import styled, { css } from "styled-components";
 import Title from "./common/Title";
 import Button from "./common/Button";
 import Label from "./common/Label";
-import styles from "./styles";
+import styles from "../styles/styles";
 
 const FormWrapper = styled.div`
   border-radius: 5px;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { loadCompany } from "./utils/requests";
-import styles from "./styles";
+import { loadCompany } from "../utils/requests";
+import styles from "../styles/styles";
 import { JobList } from "./JobList";
 import Title from "./common/Title";
 

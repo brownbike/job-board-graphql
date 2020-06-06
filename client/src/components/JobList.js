@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import styles from "./styles";
+import styles from "../styles/styles";
 
 const JobListWrapper = styled.ul`
   border-radius: 5px;

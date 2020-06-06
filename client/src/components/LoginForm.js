@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { login } from "./utils/auth";
+import { login } from "../utils/auth";
 import Button from "./common/Button";
 import Label from "./common/Label";
-import styles from "./styles";
+import styles from "../styles/styles";
 
 const Form = styled.form`
   margin: 0 auto;

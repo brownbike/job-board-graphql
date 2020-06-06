@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import styles from "./styles";
+import styles from "../styles/styles";
 
 const Nav = styled.nav`
   background-color: white;
@@ -69,6 +69,8 @@ const Button = styled.button`
 const NavLink = styled(Link)`
   ${NavItem}
 `;
+
+// TODO: Turn me into a functional component
 
 export class NavBar extends Component {
   render() {

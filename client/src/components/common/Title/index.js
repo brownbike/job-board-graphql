@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import styles from "../../styles";
+import styles from "../../../styles/styles";
 
 const Title = styled.h1`
   color: ${styles.colors.black};
