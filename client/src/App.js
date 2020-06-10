@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import styled from 'styled-components';
 import GlobalStyle from './styles/globalStyles';
 
-import { isLoggedIn, logout } from "./utils/auth";
-import { NavBar } from "./components/NavBar";
-import Routes from "./Routes";
+import { isLoggedIn, logout } from './utils/auth';
+import { NavBar } from './components/NavBar';
+import Routes from './Routes';
 
 const Outer = styled.section`
   padding: 0.25rem 1.5rem 1.5rem;
@@ -36,19 +36,19 @@ export class App extends Component {
 
   handleLogin = () => {
     this.setState({ loggedIn: true });
-    this.router.history.push("/");
+    this.router.history.push('/');
   };
 
   handleLogout = () => {
     logout();
     this.setState({ loggedIn: false });
-    this.router.history.push("/");
+    this.router.history.push('/');
   };
 
   render() {
     const { loggedIn } = this.state;
     return (
-      <Router ref={router => (this.router = router)}>
+      <Router ref={(router) => (this.router = router)}>
         <Container>
           <GlobalStyle />
           <NavBar loggedIn={loggedIn} onLogout={this.handleLogout} />

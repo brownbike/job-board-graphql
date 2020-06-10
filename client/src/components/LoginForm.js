@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { login } from "../utils/auth";
-import Button from "./common/Button";
-import Label from "./common/Label";
-import styles from "../styles/styles";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { login } from '../utils/auth';
+import Button from './common/Button';
+import Label from './common/Label';
+import styles from '../styles/styles';
 
 const Form = styled.form`
   margin: 0 auto;
@@ -30,7 +30,7 @@ const Input = styled.input`
 `;
 
 const Message = styled.p`
-  color: ${props => (props.error ? "red" : "inherit")};
+  color: ${(props) => (props.error ? 'red' : 'inherit')};
   display: block;
   font-size: 0.75rem;
   margin: 0.25em 0 0.75em;
@@ -39,7 +39,7 @@ const Message = styled.p`
 export class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", error: false };
+    this.state = { email: '', password: '', error: false };
   }
 
   handleChange(event) {
@@ -50,7 +50,7 @@ export class LoginForm extends Component {
   handleClick(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    login(email, password).then(ok => {
+    login(email, password).then((ok) => {
       if (ok) {
         this.props.onLogin();
       } else {
@@ -69,7 +69,7 @@ export class LoginForm extends Component {
             type="text"
             name="email"
             value={email}
-            onChange={e => this.handleChange(e)}
+            onChange={(e) => this.handleChange(e)}
           />
         </FieldWrapper>
         <FieldWrapper>
@@ -78,12 +78,12 @@ export class LoginForm extends Component {
             type="password"
             name="password"
             value={password}
-            onChange={e => this.handleChange(e)}
+            onChange={(e) => this.handleChange(e)}
           />
         </FieldWrapper>
         <FieldWrapper>
-          <Message error>{error && "Invalid credentials"}</Message>
-          <Button submit onClick={e => this.handleClick(e)}>
+          <Message error>{error && 'Invalid credentials'}</Message>
+          <Button submit onClick={(e) => this.handleClick(e)}>
             Login
           </Button>
         </FieldWrapper>

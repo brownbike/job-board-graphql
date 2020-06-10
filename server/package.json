@@ -16,6 +16,8 @@
     "notarealdb": "^0.2.2"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "eslint-plugin-prettier": "^3.1.3",
+    "nodemon": "^1.19.4",
+    "prettier": "^2.0.5"
   }
 }

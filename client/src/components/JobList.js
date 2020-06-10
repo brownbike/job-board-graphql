@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import styles from "../styles/styles";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import styles from '../styles/styles';
 
 const JobListWrapper = styled.ul`
   border-radius: 5px;
@@ -24,7 +24,7 @@ export class JobList extends Component {
     return <JobListWrapper>{jobs.map(this.renderJob)}</JobListWrapper>;
   }
 
-  renderJob = job => {
+  renderJob = (job) => {
     const title = job.company
       ? `${job.title} at ${job.company.name}`
       : job.title;

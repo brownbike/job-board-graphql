@@ -1,12 +1,12 @@
-import { getAccessToken } from "./auth";
-import ApolloClient from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { createHttpLink } from "apollo-link-http";
-import { setContext } from "apollo-link-context";
-import gql from "graphql-tag";
+import { getAccessToken } from './auth';
+import ApolloClient from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context';
+import gql from 'graphql-tag';
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:9000/graphql"
+  uri: 'http://localhost:9000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -14,14 +14,14 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : ""
-    }
+      authorization: token ? `Bearer ${token}` : '',
+    },
   };
 });
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 const jobDetailFragment = gql`
@@ -79,7 +79,7 @@ const jobsQuery = gql`
 
 export async function createJob(input) {
   const {
-    data: { job }
+    data: { job },
   } = await client.mutate({
     mutation: createJobMutation,
     variables: { input },
@@ -87,9 +87,9 @@ export async function createJob(input) {
       cache.writeQuery({
         query: jobQuery,
         variables: { id: data.job.id },
-        data
+        data,
       });
-    }
+    },
   });
 
   return job;
@@ -97,7 +97,7 @@ export async function createJob(input) {
 
 export async function loadCompany(id) {
   const {
-    data: { company }
+    data: { company },
   } = await client.query({ query: companyQuery, variables: { id } });
 
   return company;
@@ -105,7 +105,7 @@ export async function loadCompany(id) {
 
 export async function loadJob(id) {
   const {
-    data: { job }
+    data: { job },
   } = await client.query({ query: jobQuery, variables: { id } });
 
   return job;
@@ -113,8 +113,8 @@ export async function loadJob(id) {
 
 export async function loadJobs() {
   const {
-    data: { jobs }
-  } = await client.query({ query: jobsQuery, fetchPolicy: "no-cache" });
+    data: { jobs },
+  } = await client.query({ query: jobsQuery, fetchPolicy: 'no-cache' });
 
   return jobs;
 }
