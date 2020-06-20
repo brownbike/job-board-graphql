@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { loadCompany } from "../utils/requests";
-import styles from "../styles/styles";
-import { JobList } from "./JobList";
-import Title from "./common/Title";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { loadCompany } from '../utils/requests';
+import styles from '../styles/styles';
+import { JobList } from './JobList';
+import Title from './common/Title';
 
 const DescriptionWrapper = styled.div`
   border-radius: 5px;
@@ -22,35 +22,33 @@ const JobMessage = styled.h5`
   display: block;
 `;
 
-export class CompanyDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      company: null
-    };
-  }
+export const CompanyDetail = ({
+  match: {
+    params: { companyId },
+  },
+}) => {
+  const [company, setCompany] = useState(null);
 
-  async componentDidMount() {
-    const { companyId } = this.props.match.params;
-    const company = await loadCompany(companyId);
-    this.setState({ company });
-  }
-
-  render() {
-    const { company } = this.state;
-    if (!company) {
-      return null;
+  useEffect(() => {
+    async function fetchData() {
+      const company = await loadCompany(companyId);
+      setCompany(company);
     }
+    fetchData();
+  }, [companyId]);
 
-    return (
-      <div>
-        <Title>{company.name}</Title>
-        <DescriptionWrapper>
-          <Description>{company.description}</Description>
-          <JobMessage>Jobs at {company.name}</JobMessage>
-        </DescriptionWrapper>
-        <JobList jobs={company.jobs} />
-      </div>
-    );
+  if (!company) {
+    return null;
   }
-}
+
+  return (
+    <div>
+      <Title>{company.name}</Title>
+      <DescriptionWrapper>
+        <Description>{company.description}</Description>
+        <JobMessage>Jobs at {company.name}</JobMessage>
+      </DescriptionWrapper>
+      <JobList jobs={company.jobs} />
+    </div>
+  );
+};

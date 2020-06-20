@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { createJob } from "../utils/requests";
-import styled, { css } from "styled-components";
-import Title from "./common/Title";
-import Button from "./common/Button";
-import Label from "./common/Label";
-import styles from "../styles/styles";
+import React, { useState } from 'react';
+import { createJob } from '../utils/requests';
+import styled, { css } from 'styled-components';
+import Title from './common/Title';
+import Button from './common/Button';
+import Label from './common/Label';
+import styles from '../styles/styles';
 
 const FormWrapper = styled.div`
   border-radius: 5px;
@@ -42,58 +42,52 @@ const TextArea = styled.textarea`
   height: 10em;
 `;
 
-export class JobForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { title: "", description: "" };
-  }
+export const JobForm = ({ history }) => {
+  const [formValues, setFormValues] = useState({});
 
-  handleChange(event) {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
+    setFormValues({ ...formValues, [name]: value });
+  };
 
-  handleClick(event) {
+  const handleClick = (event) => {
     event.preventDefault();
-    const { title, description } = this.state;
+    const { title, description } = formValues;
 
-    createJob({ title, description }).then(job => {
-      this.props.history.push(`/jobs/${job.id}`);
+    createJob({ title, description }).then((job) => {
+      history.push(`/jobs/${job.id}`);
     });
-  }
+  };
 
-  render() {
-    const { title, description } = this.state;
-    return (
-      <>
-        <Title>New Job</Title>
-        <FormWrapper>
-          <form>
-            <FieldWrapper>
-              <Label>Title</Label>
-              <Input
-                type="text"
-                name="title"
-                value={title}
-                onChange={e => this.handleChange(e)}
-              />
-            </FieldWrapper>
-            <FieldWrapper>
-              <Label>Description</Label>
-              <TextArea
-                name="description"
-                value={description}
-                onChange={e => this.handleChange(e)}
-              />
-            </FieldWrapper>
-            <FieldWrapper>
-              <Button submit onClick={e => this.handleClick(e)}>
-                Submit
-              </Button>
-            </FieldWrapper>
-          </form>
-        </FormWrapper>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Title>New Job</Title>
+      <FormWrapper>
+        <form>
+          <FieldWrapper>
+            <Label>Title</Label>
+            <Input
+              type="text"
+              name="title"
+              value={formValues.title || ''}
+              onChange={(e) => handleChange(e)}
+            />
+          </FieldWrapper>
+          <FieldWrapper>
+            <Label>Description</Label>
+            <TextArea
+              name="description"
+              value={formValues.description || ''}
+              onChange={(e) => handleChange(e)}
+            />
+          </FieldWrapper>
+          <FieldWrapper>
+            <Button submit onClick={(e) => handleClick(e)}>
+              Submit
+            </Button>
+          </FieldWrapper>
+        </form>
+      </FormWrapper>
+    </>
+  );
+};

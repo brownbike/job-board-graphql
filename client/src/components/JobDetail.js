@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { loadJob } from "../utils/requests";
-import styled from "styled-components";
-import Title from "./common/Title";
-import styles from "../styles/styles";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { loadJob } from '../utils/requests';
+import styled from 'styled-components';
+import Title from './common/Title';
+import styles from '../styles/styles';
 
 const SubTitle = styled.h2`
   color: ${styles.colors.gray};
@@ -26,34 +26,35 @@ const Description = styled.p`
   display: block;
 `;
 
-export class JobDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { job: null };
-  }
+export const JobDetail = ({
+  match: {
+    params: { jobId },
+  },
+}) => {
+  const [job, setJob] = useState(null);
 
-  async componentDidMount() {
-    const { jobId } = this.props.match.params;
-    const job = await loadJob(jobId);
-    this.setState({ job });
-  }
-
-  render() {
-    const { job } = this.state;
-    if (!job) {
-      return null;
+  useEffect(() => {
+    async function fetchJob() {
+      const job = await loadJob(jobId);
+      setJob(job);
     }
 
-    return (
-      <>
-        <Title>{job.title}</Title>
-        <SubTitle>
-          <Link to={`/companies/${job.company.id}`}>{job.company.name}</Link>
-        </SubTitle>
-        <DescriptionWrapper>
-          <Description>{job.description}</Description>
-        </DescriptionWrapper>
-      </>
-    );
+    fetchJob();
+  }, [jobId]);
+
+  if (!job) {
+    return null;
   }
-}
+
+  return (
+    <>
+      <Title>{job.title}</Title>
+      <SubTitle>
+        <Link to={`/companies/${job.company.id}`}>{job.company.name}</Link>
+      </SubTitle>
+      <DescriptionWrapper>
+        <Description>{job.description}</Description>
+      </DescriptionWrapper>
+    </>
+  );
+};
