@@ -50,7 +50,7 @@ export const JobForm = ({ history }) => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const { title, description } = formValues;
 
@@ -82,7 +82,7 @@ export const JobForm = ({ history }) => {
             />
           </FieldWrapper>
           <FieldWrapper>
-            <Button submit onClick={(e) => handleClick(e)}>
+            <Button submit onClick={(e) => handleSubmit(e)}>
               Submit
             </Button>
           </FieldWrapper>
